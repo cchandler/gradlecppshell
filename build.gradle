@@ -1,33 +1,33 @@
 apply plugin: 'cpp'
 
 model {
-    components {
-      engine(NativeLibrarySpec) {
-        binaries.all {
-          cppCompiler.args '--std=c++11'
+  components {
+    engine(NativeLibrarySpec) {
+      binaries.all {
+        cppCompiler.args '--std=c++11'
+      }
+    }
+
+    main(NativeExecutableSpec) {
+      binaries.all {
+        cppCompiler.args '--std=c++11'
+      }
+      sources {
+        cpp {
+          lib library: "engine", linkage: 'static'
         }
       }
+    }
 
-      main(NativeExecutableSpec) {
-          binaries.all {
-            cppCompiler.args '--std=c++11'
-          }
-          sources {
-            cpp {
-              lib library: "engine", linkage: 'static'
-            }
-          }
+    mainTest(NativeExecutableSpec) {
+      binaries.all {
+        cppCompiler.args '--std=c++11'
       }
-
-      mainTest(NativeExecutableSpec) {
-          binaries.all {
-            cppCompiler.args '--std=c++11'
-          }
-          sources {
-            cpp {
-              lib library: "engine", linkage: 'static'
-            }
-          }
+      sources {
+        cpp {
+          lib library: "engine", linkage: 'static'
+        }
       }
+    }
   }
 }
